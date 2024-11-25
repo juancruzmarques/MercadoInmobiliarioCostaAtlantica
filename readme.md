@@ -45,7 +45,7 @@ Este proyecto está construido con:
 
 ## 🛠️ **Cómo usar este proyecto**  
 
-El proyecto aún se encuentra en desarrollo, al ser finalizado dejaré las instrucciones aquí.
+🚧⚠️ **El proyecto aún se encuentra en desarrollo, al ser finalizado dejaré las instrucciones aquí.**
 
 ---
 
