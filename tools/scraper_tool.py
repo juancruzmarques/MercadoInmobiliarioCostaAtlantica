@@ -44,28 +44,31 @@ class Scraper:
             print(f'Accesed url:     {modified_url}')
             response = self.scraper.get(modified_url, proxies=self.proxy_pool.get_proxy()).text
             soup = BeautifulSoup(response, "html.parser")   
-            pubs = soup.find_all(class_='PostingContainer-sc-i1odl-2 iQlPeD')
-            for pub in pubs:
-                price = pub.find(class_='Price-sc-12dh9kl-3 geYYII').text
-                location = pub.find('div', class_='LocationAddress-sc-ge2uzh-0 iylBOA postingAddress')
+            pubs = soup.find_all(class_='CardContainer-sc-1tt2vbg-5 fvuHxG')
 
-                if location == None: 
-                    location = 'N/A'
+            for pub in pubs:
+                price = pub.find(class_='postingPrices-module__price__fqpP5').text
+                posting_address = pub.find('div', class_='postingLocations-module__location-address__k8Ip7 postingLocations-module__location-address-in-listing__UQS03')
+                location = pub.find(class_='postingLocations-module__location-text__Y9QrY').text
+
+                if posting_address == None: 
+                    posting_address = 'N/A'
                 else: 
-                    location = location.text
-                main_features = pub.find('h3', class_='PostingMainFeaturesBlock-sc-1uhtbxc-0 cHDgeO')
+                    posting_address = posting_address.text
+
+                main_features = pub.find('h3', class_='postingMainFeatures-module__posting-main-features-block__se1F_ postingMainFeatures-module__posting-main-features-block-one-line__BFUdC')
 
                 if main_features == None:
                     continue
                 else:
                     main_features = main_features.find_all('span')
-                    feature_count = len(main_features)
                     features = dict()
                     for feature in main_features:
                         feature_split = feature.text.split(' ')
                         features[feature_split[1]] = feature_split[0]
                 publication = dict()
                 publication['price'] = price
+                publication['posting_address'] = posting_address 
                 publication['location'] = location
                 publication.update(features)
                 print(publication)
