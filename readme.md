@@ -1,6 +1,6 @@
-# 🏠📊 **ZonaProp Scraper: Análisis de propiedades en la Costa Atlántica**  
+# 🏠📊 **ZonaProp Scraper: Análisis del mercado inmobiliario en la Costa Atlántica**  
 
-🚀 El objetivo de este proyecto es recolectar y analizar datos de propiedades publicadas en venta en **ZonaProp**, en particulaar de la **Costa Atlántica Provincia de Buenos Aires**. A su vez, resulta una oportunidad perfecta para poner en práctica conceptos y herramientas aprendidos en lo que respecta al análisis de datos.
+🚀 El objetivo de este proyecto es recolectar y analizar datos de propiedades publicadas en venta en **ZonaProp**, en particulaar de la **Costa Atlántica de la Provincia de Buenos Aires**. A su vez, resulta una oportunidad perfecta para poner en práctica conceptos y herramientas aprendidos en lo que respecta al análisis de datos.
 
 ---
 
