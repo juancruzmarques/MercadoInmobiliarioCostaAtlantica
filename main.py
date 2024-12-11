@@ -3,7 +3,7 @@ from tools.scraper_tool import Scraper
 
 api_proxies=  "https://api.proxyscrape.com/v4/free-proxy-list/get?request=display_proxies&country=ar&proxy_format=protocolipport&format=text" 
 link = "https://www.zonaprop.com.ar/departamentos-venta-buenos-aires-costa-atlantica.html"
-new_proxies= "https://proxylist.geonode.com/api/proxy-list?limit=500&page=1&sort_by=lastChecked&sort_type=desc"
+
 
 def main():
     proxy = ProxyList(api_proxies)
