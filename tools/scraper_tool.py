@@ -105,7 +105,11 @@ class Scraper:
                         expenses = float(expenses_parts[1].replace('.', ''))
                         expenses_currency = expenses_parts[0]
 
-                description = pub.find('h3', class_='postingCard-module__posting-description__r17OH').text
+                description = pub.find('h3', class_='postingCard-module__posting-description__r17OH')
+                if description == None:
+                    description = 'N/A'
+                else:
+                    description = description.text
 
                 main_features = pub.find('h3', class_='postingMainFeatures-module__posting-main-features-block__se1F_ postingMainFeatures-module__posting-main-features-block-one-line__BFUdC')
                 link = 'https://www.zonaprop.com.ar' + pub.find('h3', class_='postingCard-module__posting-description__r17OH').find('a').get('href')
