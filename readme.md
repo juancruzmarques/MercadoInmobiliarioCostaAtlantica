@@ -45,7 +45,12 @@ Este proyecto está construido con:
 
 ## 🛠️ **Cómo usar este proyecto**  
 
-🚧⚠️ **El proyecto aún se encuentra en desarrollo, al ser finalizado dejaré las instrucciones aquí.**
+🚧⚠️ **El proyecto aún se encuentra en desarrollo, por lo que aún se encuentra sujeto a cambios**
+
+1. Deben instalarse las librerías correspondientes. (Aquí debo dejar la lista y la aclaración sobre la versión de python). Además se debe contar con SQLite.
+2. Una vez clonado el repositorio se puede modificar el url que se encuentra en main.py si se desea realizar para otra región o categoría de inmueble, por defecto solo recaba información sobre departamentos en la región de la Costa Atlántica de la Pcia de Buenos Aires.
+3. Se puede correr el script ejecutando 'main.py' en la terminal, tal que: 'python main.py'.
+4. Una vez finalizado se econtrará un documento llamado 'ZonaPropData.sqlite3' o 'ZonaPropData', dicho documento se puede acceder a travéz del SQLiteBrowser desde allí se puede generar un archivo '.csv'.
 
 ---
 
