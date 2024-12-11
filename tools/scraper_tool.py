@@ -65,13 +65,19 @@ class Scraper:
                         )
                     ''')
 
-        for page in range(1, self.get_pages()):
+        for page in range(1, self.get_pages()+1):
             if page == 1:
                 modified_url = self.base_url + '-orden-precio-descendente' + ".html"
             else:
                 modified_url = self.base_url + '-orden-precio-descendente'+ '-pagina-'+ str(page)+ ".html"
             print(f'Accesed url:  {modified_url}')
-            response = self.scraper.get(modified_url, proxies=self.proxy_pool.get_proxy()).text
+
+            try:
+                response = self.scraper.get(modified_url, proxies=self.proxy_pool.get_proxy()).text
+            except:
+                # Si hay algún tipo de error con la proxy utilizada salta a la siguiente
+                response = self.scraper.get(modified_url, proxies=self.proxy_pool.get_proxy()).text
+
             soup = BeautifulSoup(response, "html.parser")   
             pubs = soup.find_all(class_='CardContainer-sc-1tt2vbg-5 fvuHxG')
 
@@ -112,9 +118,14 @@ class Scraper:
                     description = description.text
 
                 main_features = pub.find('h3', class_='postingMainFeatures-module__posting-main-features-block__se1F_ postingMainFeatures-module__posting-main-features-block-one-line__BFUdC')
-                link = 'https://www.zonaprop.com.ar' + pub.find('h3', class_='postingCard-module__posting-description__r17OH').find('a').get('href')
-
-                identification = int(re.findall(r'(?<=-)\d+(?=\.html$)', link)[0])
+                link = pub.find('h3', class_='postingCard-module__posting-description__r17OH')
+                    
+                if link == None:
+                    link = 'N/A'
+                    identification = 0
+                else:
+                    link = 'https://www.zonaprop.com.ar' + link.find('a').get('href')
+                    identification = int(link.split('-')[-1].replace('.html', ''))
 
                 publication['price'] = price
                 publication['expenses_currency'] = expenses_currency
@@ -149,7 +160,7 @@ class Scraper:
                 publication['description'] = description
 
 
-                print(publication)
+                #print(publication)
 
                 cur.execute(
                         '''
