@@ -1,6 +1,8 @@
 import re
+import cloudscraper
 import requests
 from itertools import cycle
+import random
 
 class ProxyList:
     def __init__(self, link):
@@ -15,15 +17,17 @@ class ProxyList:
             if method == 'socks4':
                 continue
             proxies[method] = proxy
+
             self.proxies_list.append(proxies)
 
-        self.proxy_pool = cycle(self.proxies_list)
+
+        self.proxy_pool = self.proxies_list
         self.lap_count: int = 0
         self.pool_size: int = len(self.proxies_list)
         print('Proxy pool size: %s'% self.pool_size)
 
     def get_proxy(self):
-        aProxy = next(self.proxy_pool)
+        aProxy = random.choice(self.proxy_pool)
         print(f'Proxy usada:  {aProxy}')
         self.lap_count =+1
         if self.lap_count >= self.pool_size:

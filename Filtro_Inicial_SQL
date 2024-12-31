@@ -1,0 +1,14 @@
+SELECT
+	*
+FROM 
+	Propiedades
+WHERE
+	precio != 'N/A' AND  precio != 1111111 AND 	precio != 11111111 AND precio != 11111
+AND
+	localizacion != 'N/A'
+AND
+	metros_cuadrados != 'N/A'
+AND
+	ambientes != 'N/A'
+ORDER BY 
+	metros_cuadrados DESC
