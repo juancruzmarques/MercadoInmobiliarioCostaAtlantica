@@ -22,8 +22,10 @@ Este proyecto está construido con:
 - 🔄 **Requests**: Librería de python utilizada para manejar solicitudes HTTP. (Es utilizada de forma indirecta ya que forma parte de la librería CloudScraper)
 - ☁️🚪**CloudScraper**: Es una librería de python que me permite saltar el anti-bots de cloudflare.
 - 📊 **Pandas**: Una libraría de python que me permite limpiar y estructurar los datos obtenidos.  
-- 🛢️ **MySQL/SQLite**: Una base de datos que cumple la función de almacenar y me permite acceder a los datos de una forma poderosa y flexible.
+- 🛢️ **MySQL**: Una base de datos que cumple la función de almacenar y me permite acceder a los datos de una forma poderosa y flexible.
 - 📈 **Tableau**: Para crear visualizaciones impactantes.  
+
+### Además para sortear el obstaculo de los bloqueos de IP utilizo ip proxies.
 
 ---
 

@@ -1,14 +1,3 @@
-tareas.md
-DatosZonaProp_No_NAs
-ZonaPropData.sqlite3
-ZonaPropData
-ZonaPropData(1)
-Data
-DatosZonaProp_limpios_v3.csv
-Datos_a_limpiar_n2
-Datos_a_limpiar_n3
-Untitled.ipynb
-Untitled1.ipynb
+./notebooks/Datos_a_limpiar_n3.csv
+./notebooks/Datos_ZonaProp_limpios_v3.csv
 .ipynb_checkpoints
-save.txt
-Análisis_exploratorio_de_datos.ipynb
