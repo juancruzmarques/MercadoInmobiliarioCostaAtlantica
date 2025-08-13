@@ -18,15 +18,16 @@ def main():
     proxy = ProxyList(api_proxies)
     busqueda = Scraper(link, proxy, 'Propiedades6')
 
+    # Si solo queremos expandir los datos entrando a cada link.
     if exclusivo_expandir in ['n', 'N']:
         expandir = input('¿Desea expandir los datos al finalizar la busqueda inicial? (s/n):')
         if expandir not in ['s', 'n', 'S', 'N']: # Validamos la opción
             expandir = 'n'
         busqueda.get_pubs_multi(hilos) #scrapeo
-        if expandir == 's':
+        if expandir in ['s', 'S']:
             busqueda.expand_data_multi(hilos)
     else:
-        busqueda.expand_data_multi(hilos)
+       pass 
 
     end_time = time.time()
     elapsed_time = end_time - start_time

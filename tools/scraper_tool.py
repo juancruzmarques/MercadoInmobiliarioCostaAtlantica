@@ -30,7 +30,6 @@ class Scraper:
         '''
         Obtiene el numero de páginas para dicha consulta a zonaprop.
         '''
-
     # Encuentr el numero de paginas
         response = self.scraper.get(self.base_url + ".html", proxies=self.proxy_pool.get_proxy()).text
         soup = BeautifulSoup(response, "html.parser")   
@@ -279,7 +278,7 @@ class Scraper:
             for script in script_tags:
                 publication_data = {}
 
-# Extract Base64 strings using regex
+                # Extract Base64 strings using regex
                 lat_match = re.search(r'mapLatOf\s*=\s*"([^"]+)"', script.string)
                 lng_match = re.search(r'mapLngOf\s*=\s*"([^"]+)"', script.string)
 
