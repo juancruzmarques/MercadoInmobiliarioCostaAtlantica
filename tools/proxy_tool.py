@@ -1,11 +1,15 @@
 import re
-import cloudscraper
 import requests
-from itertools import cycle
 import random
 
 class ProxyList:
+    """
+    Este modulo se utiliza para obtener proxies de una fuente gratuita.
+    """
     def __init__(self, link):
+        """
+        Este constructor obtiene la lista inicial de proxies a utilizar.
+        """
         self.link = link 
         self.proxies_list = list()
         self.res = requests.get(self.link).text.splitlines()
@@ -27,6 +31,9 @@ class ProxyList:
         print('Proxy pool size: %s'% self.pool_size)
 
     def get_proxy(self):
+        """
+        Este metodo devuelve una proxie de forma random.
+        """
         aProxy = random.choice(self.proxy_pool)
         print(f'Proxy usada:  {aProxy}')
         self.lap_count =+1
@@ -35,21 +42,3 @@ class ProxyList:
             self.lap_count = 0
         return aProxy
 
-
-
-
-'''
-def getting_proxies(a):
-    res = requests.get(a).text.splitlines()
-    proxies_list = list()
-    for i in res:
-        proxies = dict()
-        method = re.search('^[^:]+', i).group()
-        if method == 'socks4':
-            continue
-        proxi = i
-        proxies[method] = proxi
-        proxies_list.append(proxies)
-    print(f'Cantidad de proxies disponibles: {len(proxies_list)}')
-    return proxies_list
-'''

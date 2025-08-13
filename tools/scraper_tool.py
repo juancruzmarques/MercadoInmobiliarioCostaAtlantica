@@ -12,6 +12,9 @@ import json
 
 class Scraper:
     def __init__(self, base_url: str, proxy: ProxyList, db_table_name)-> None:    
+        """
+        Constructor de la herramienta para escrapear.
+        """
         self.proxy_pool: ProxyList= proxy
         self.base_url = base_url.replace('.html', '')
         self.scraper = cloudscraper.create_scraper(browser={
@@ -24,6 +27,9 @@ class Scraper:
         self.dbtable = db_table_name
         
     def get_pages (self):
+        '''
+        Obtiene el numero de páginas para dicha consulta a zonaprop.
+        '''
 
     # Encuentr el numero de paginas
         response = self.scraper.get(self.base_url + ".html", proxies=self.proxy_pool.get_proxy()).text
@@ -54,6 +60,9 @@ class Scraper:
 # Es decir, que la implementación del multi process se hace dentro de la clase. 
 # Pero a la hora scrapear se decide si se hace simple o multi proceso (Que eventualmente será el pordefecto).
     def get_pubs(self, rangoss: list):
+        """
+        Obtiene las publicaciónes dentro de un rango de páginas definido.
+        """
         # Quiero que se cree una base de datos para cada rango de páginas, es decir para cada processo o worker
         page_range = rangoss
 
@@ -200,7 +209,10 @@ class Scraper:
             conn.commit()
             print(f'PAGINA {page}/{rangoss[-1]} DE {self.pages} FINALIZADA')
 
-    def get_pubs_multi(self, number_of_workers):
+    def get_pubs_multi(self, number_of_workers=1):
+        """
+        Obtiene las publicaciones de forma concurrente o en paralelo definido por el numero de instacias 'number of workers' indicado en la función. Por default es 1.
+        """
         numero_de_paginas = self.get_pages()
         intervalo = math.ceil(numero_de_paginas / number_of_workers)
 
